@@ -32,6 +32,16 @@ We evaluate both architectures on object and indoor scene completion tasks, achi
 #### Semantic scene completion
 ![objects](readme_imgs/CVPR_scannet.png#center)
 
+### Training
+```bash
+CUDA_VISIBLE_DEVICES=1 python3 train.py --batch 4 --n_regions 1 --npoints 2048 4096 --dataset shapenet --savepath exp_shapenet --methods disp3d
+```
+
+### Validation
+```bash
+CUDA_VISIBLE_DEVICES=1 python3 val.py --n_regions 1 --npoints 2048 4096 --model log/exp_shapenet/network.pth --dataset shapenet --methods disp3d
+```
+
 ## Cite
 
 If you find this work useful in your research, please cite:
