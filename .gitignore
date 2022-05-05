@@ -1,0 +1,9 @@
+__pycache__
+*.egg
+*.egg-info
+build
+log/
+data
+.egg-info/
+distance/
+other_models
