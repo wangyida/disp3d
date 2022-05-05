@@ -1,6 +1,6 @@
 # Learning Local Displacements for Point Cloud Completion
 
-BSD 3-Clause License Copyright (c) 2022, Yida Wang All rights reserved.
+BSD 2-Clause License Copyright (c) 2022, Yida Wang All rights reserved.
 
 ## Abstrarct
 | Completing a car |  |
@@ -14,7 +14,7 @@ Then, to avoid losing individual descriptors as part of standard operations such
 While this model is already able to achieve competitive results with the state of the art, we further propose a way to increase the versatility of our approach to process point clouds. To this aim, we introduce a second model that assembles our layers within a transformer architecture.
 We evaluate both architectures on object and indoor scene completion tasks, achieving state-of-the-art performance.
 
-## Methodology
+## 3D local displacement
 ### Local displacement operator
 | The operation |  |
 | :-: | :-- |
@@ -34,12 +34,13 @@ We evaluate both architectures on object and indoor scene completion tasks, achi
 
 ### Training
 ```bash
-CUDA_VISIBLE_DEVICES=1 python3 train.py --batch 4 --n_regions 1 --npoints 2048 4096 --dataset shapenet --savepath exp_shapenet --methods disp3d
+CUDA_VISIBLE_DEVICES=0 python3 train.py --batch 8 --n_regions 1 --npoints 2048 4096 --dataset shapenet --savepath exp_shapenet --methods disp3d
 ```
+Training with multiple GPU could be configured using `CUDA_VISIBLE_DEVICES=0,1,2,3 ...`. Optional approach should be indicated by `--methods`, some choices are disp3d, folding, atlas, pcn, msn, grnet, pointr, snowflake, softpool, etc.
 
 ### Validation
 ```bash
-CUDA_VISIBLE_DEVICES=1 python3 val.py --n_regions 1 --npoints 2048 4096 --model log/exp_shapenet/network.pth --dataset shapenet --methods disp3d
+CUDA_VISIBLE_DEVICES=0 python3 val.py --n_regions 1 --npoints 2048 4096 --model log/exp_shapenet/network.pth --dataset shapenet --methods disp3d
 ```
 
 ## Cite
