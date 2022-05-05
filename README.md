@@ -33,8 +33,8 @@ We evaluate both architectures on object and indoor scene completion tasks, achi
 ![objects](readme_imgs/CVPR_scannet.png#center)
 
 ### Setup
-with Conda
-```
+with [Conda](https://docs.conda.io/en/latest/)
+```bash
 conda create --name disp3d pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 conda activate disp3d
 pip install -r dependencies.txt
@@ -45,11 +45,18 @@ bash setup.sh
 ```bash
 CUDA_VISIBLE_DEVICES=0 python3 train.py --batch 8 --n_regions 1 --npoints 2048 4096 --dataset shapenet --savepath exp_shapenet --methods disp3d
 ```
-Training with multiple GPU could be configured using `CUDA_VISIBLE_DEVICES=0,1,2,3 ...`. Optional approach should be indicated by `--methods`, some choices are disp3d, folding, atlas, pcn, msn, grnet, pointr, snowflake, softpool, etc.
+Training with multiple GPU could be configured using `CUDA_VISIBLE_DEVICES=0,1,2,3 ...`. Optional approach should be indicated by `--methods`, some options are `disp3d` for this work, `folding` for FoldingNet, `atlas` for AtlasNet, `pcn` for PCN, `msn` for MSN, `grnet` for GRNet, `pointr` for PoinTr, `snowflake` for SnowflakeNet, `softpool` for SoftPoolNet, etc.
 
 ### Validation
 ```bash
 CUDA_VISIBLE_DEVICES=0 python3 val.py --n_regions 1 --npoints 2048 4096 --model log/exp_shapenet/network.pth --dataset shapenet --methods disp3d
+```
+
+### Visualization
+Render points with the help of spherical structures in Mitsuba.
+```bash
+cd render_mitsuba/
+./render.sh -f ../pcds
 ```
 
 ## Cite
