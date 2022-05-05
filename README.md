@@ -32,6 +32,15 @@ We evaluate both architectures on object and indoor scene completion tasks, achi
 #### Semantic scene completion
 ![objects](readme_imgs/CVPR_scannet.png#center)
 
+### Setup
+with Conda
+```
+conda create --name disp3d pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+conda activate disp3d
+pip install -r dependencies.txt
+bash setup.sh
+```
+
 ### Training
 ```bash
 CUDA_VISIBLE_DEVICES=0 python3 train.py --batch 8 --n_regions 1 --npoints 2048 4096 --dataset shapenet --savepath exp_shapenet --methods disp3d
