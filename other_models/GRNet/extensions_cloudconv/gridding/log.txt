@@ -1,0 +1,15 @@
+running install
+running bdist_egg
+running egg_info
+writing gridding.egg-info/PKG-INFO
+writing dependency_links to gridding.egg-info/dependency_links.txt
+writing top-level names to gridding.egg-info/top_level.txt
+reading manifest file 'gridding.egg-info/SOURCES.txt'
+writing manifest file 'gridding.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-x86_64/egg
+running install_lib
+running build_ext
+building 'gridding' extension
+Emitting ninja build file /home/wangyida/Documents/gitfarm/cloudconv/other_models/GRNet/extensions/gridding/build/temp.linux-x86_64-3.6/build.ninja...
+Compiling objects...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
