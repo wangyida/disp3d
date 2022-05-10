@@ -414,7 +414,8 @@ def main():
                     points2surf.cuda() * sample_scale.data + sample_mean.data,
                     gt=gt,
                     gt_seg=gt_seg,
-                    dataset=opt.dataset)
+                    dataset=opt.dataset,
+                    with_fp=False)
                 """
                 """
                 points_save.points_save(

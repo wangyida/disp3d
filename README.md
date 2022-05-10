@@ -1,5 +1,10 @@
 # Learning Local Displacements for Point Cloud Completion
 
+The implementation of our [paper](https://arxiv.org/abs/2203.16600) accepted in **CVPR** *2022* (*Conference on Computer Vision and Pattern Recognition*, IEEE) 
+
+Authors:
+[Yida Wang](https://wangyida.github.io), David Tan, [Nassir Navab](http://campar.in.tum.de/Main/NassirNavab) and [Federico Tombari](http://campar.in.tum.de/Main/FedericoTombari)
+
 BSD 2-Clause License Copyright (c) 2022, Yida Wang All rights reserved.
 
 ## Abstrarct
@@ -51,12 +56,18 @@ Training with multiple GPU could be configured using `CUDA_VISIBLE_DEVICES=0,1,2
 ```bash
 CUDA_VISIBLE_DEVICES=0 python3 val.py --n_regions 1 --npoints 2048 4096 --model log/exp_shapenet/network.pth --dataset shapenet --methods disp3d
 ```
+The output point cloud will be stored in `./pcds` folder.
 
 ### Visualization
 Render points with the help of spherical structures in Mitsuba.
 ```bash
 cd render_mitsuba/
 ./render.sh -f ../pcds
+```
+To get false positive points on output rendered in red like Figure. 7 in our paper (default color is presenting its categorical labels), the option `with_fp` in colormap function need to get set to be **True** in `val.py`.
+```python
+from other_tools import colormap
+pts_color = colormap.colormap(points, gt=ground_truth, gt_seg=segmentation, with_fp=False, dataset='shapenet'):
 ```
 
 ## Cite
